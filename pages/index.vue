@@ -34,8 +34,8 @@
 		</div>
 		<div class="right-section">
 			<h1>
-				Hello there, I'm a designer who cares about making beautiful
-				things that help people.
+				Hello there, I'm a design student who cares about making
+				beautiful things that help people.
 			</h1>
 		</div>
 	</div>
@@ -71,6 +71,7 @@ const showLastName = ref(false);
 .right-section {
 	flex: 2;
 	padding: 2rem;
+	padding-left: 10rem;
 	margin-top: 8rem;
 }
 
@@ -80,7 +81,7 @@ const showLastName = ref(false);
 	left: 0;
 	right: 0;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	padding: 0 2rem;
 	width: 100%;
 }
@@ -95,7 +96,9 @@ const showLastName = ref(false);
 }
 
 .initial:last-child {
-	margin-right: 15%;
+	position: absolute;
+	left: 33.3rem;
+	margin-right: 0;
 }
 
 .letter {
@@ -115,7 +118,8 @@ const showLastName = ref(false);
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-	margin-top: 8rem;
+	margin-top: 10.5rem;
+	margin-left: 0.37rem;
 }
 
 .nav-item {
