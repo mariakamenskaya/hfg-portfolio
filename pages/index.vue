@@ -48,11 +48,17 @@ const showLastName = ref(false);
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+
+* {
+	font-family: "Inter", sans-serif;
+}
+
 .container {
 	display: flex;
 	min-height: 100vh;
 	padding: 2rem;
-	font-family: system-ui, -apple-system, sans-serif;
+	position: relative;
 }
 
 .left-section {
@@ -65,20 +71,31 @@ const showLastName = ref(false);
 .right-section {
 	flex: 2;
 	padding: 2rem;
+	margin-top: 8rem;
 }
 
 .initials-container {
+	position: absolute;
+	top: 2rem;
+	left: 0;
+	right: 0;
 	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
+	justify-content: space-between;
+	padding: 0 2rem;
+	width: 100%;
 }
 
 .initial {
 	display: flex;
 	align-items: center;
-	font-size: 2rem;
-	font-weight: 500;
+	font-size: 4rem;
+	font-weight: 400;
 	cursor: pointer;
+	position: relative;
+}
+
+.initial:last-child {
+	margin-right: 15%;
 }
 
 .letter {
@@ -88,13 +105,17 @@ const showLastName = ref(false);
 .full-name {
 	display: inline-block;
 	font-weight: 400;
+	font-size: 4rem;
+	position: absolute;
+	left: 100%;
+	white-space: nowrap;
 }
 
 .navigation {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-	margin-top: 2rem;
+	margin-top: 8rem;
 }
 
 .nav-item {
@@ -114,7 +135,7 @@ const showLastName = ref(false);
 
 h1 {
 	font-size: 3.5rem;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 1.2;
 	max-width: 800px;
 }
