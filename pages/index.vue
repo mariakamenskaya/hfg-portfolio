@@ -76,14 +76,16 @@ const showLastName = ref(false);
 }
 
 .initials-container {
-	position: absolute;
+	position: fixed;
 	top: 2rem;
 	left: 0;
 	right: 0;
 	display: flex;
+	gap: 27.5rem;
 	justify-content: flex-start;
 	padding: 0 2rem;
 	width: 100%;
+	z-index: 10;
 }
 
 .initial {
@@ -96,8 +98,8 @@ const showLastName = ref(false);
 }
 
 .initial:last-child {
-	position: absolute;
-	left: 33.3rem;
+	position: relative;
+	left: auto;
 	margin-right: 0;
 }
 
@@ -120,6 +122,8 @@ const showLastName = ref(false);
 	gap: 1rem;
 	margin-top: 10.5rem;
 	margin-left: 0.37rem;
+	position: relative;
+	z-index: 1;
 }
 
 .nav-item {

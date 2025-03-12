@@ -89,7 +89,7 @@ const showLastName = ref(false);
 	background-image: url("/images/profile.jpg");
 	background-size: cover;
 	background-position: center;
-	opacity: 0.9;
+	opacity: 1;
 	z-index: -1;
 }
 
@@ -110,15 +110,16 @@ const showLastName = ref(false);
 }
 
 .initials-container {
-	position: absolute;
+	position: fixed;
 	top: 2rem;
 	left: 0;
 	right: 0;
 	display: flex;
+	gap: 27.5rem;
 	justify-content: flex-start;
 	padding: 0 2rem;
 	width: 100%;
-	z-index: 2;
+	z-index: 10;
 }
 
 .initial {
@@ -128,12 +129,6 @@ const showLastName = ref(false);
 	font-weight: 400;
 	cursor: pointer;
 	position: relative;
-}
-
-.initial:last-child {
-	position: absolute;
-	left: 33.3rem;
-	margin-right: 0;
 }
 
 .letter {
@@ -156,7 +151,7 @@ const showLastName = ref(false);
 	margin-top: 10.5rem;
 	margin-left: 0.37rem;
 	position: relative;
-	z-index: 2;
+	z-index: 1;
 }
 
 .nav-item {
@@ -187,7 +182,7 @@ h1 {
 }
 
 .text-content p {
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	line-height: 1.6;
 	margin-bottom: 2rem;
 	color: #333;
