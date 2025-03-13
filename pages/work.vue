@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="initials-container">
+		<div class="initials-container" :class="{ hidden: isNavigationHidden }">
 			<div
 				class="initial"
 				@mouseover="showFullName = true"
@@ -22,7 +22,7 @@
 				</transition>
 			</div>
 		</div>
-		<div class="left-section">
+		<div class="left-section" :class="{ hidden: isNavigationHidden }">
 			<nav class="navigation">
 				<NuxtLink to="/" class="nav-item">Intro</NuxtLink>
 				<NuxtLink to="/work" class="nav-item active">Work</NuxtLink>
@@ -47,10 +47,24 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const showFullName = ref(false);
 const showLastName = ref(false);
+const isNavigationHidden = ref(false);
+
+const handleScroll = () => {
+	const scrollPosition = window.scrollY;
+	isNavigationHidden.value = scrollPosition > 100;
+};
+
+onMounted(() => {
+	window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+	window.removeEventListener("scroll", handleScroll);
+});
 
 const projects = [
 	{ id: "nass-clean", title: "Nass-clean water, clean data" },
@@ -85,6 +99,7 @@ const projects = [
 	padding: 0 2rem;
 	width: 100%;
 	z-index: 10;
+	transition: transform 0.5s ease;
 }
 
 .initial {
@@ -114,6 +129,11 @@ const projects = [
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	transition: transform 0.5s ease;
+}
+
+.left-section.hidden {
+	transform: translateX(-100%);
 }
 
 .navigation {
@@ -143,48 +163,48 @@ const projects = [
 
 .right-section {
 	flex: 2;
-	padding: 2rem;
-	padding-left: 10rem;
+	padding-left: 9rem;
 	margin-top: 8rem;
-	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100vh;
 }
 
 .projects-container {
 	display: flex;
-	gap: 2rem;
-	overflow-x: auto;
-	padding-bottom: 2rem;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-.projects-container::-webkit-scrollbar {
-	display: none;
+	flex-direction: column;
+	width: 100%;
 }
 
 .project-card {
-	flex: 0 0 auto;
-	width: 400px;
 	text-decoration: none;
 	color: inherit;
-	transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-	transform: translateY(-5px);
+	width: 100%;
+	margin-bottom: -6rem;
+	padding-bottom: 8rem;
 }
 
 .project-image {
 	width: 100%;
-	height: 400px;
+	height: 75vh;
 	background-color: #e5e5e5;
-	margin-bottom: 1rem;
-	border-radius: 4px;
+	border-radius: 8px;
 }
 
 .project-title {
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 400;
-	color: #333;
+	color: #666;
+	margin-top: 1rem;
+	padding-left: 0.5rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>
